@@ -1,5 +1,5 @@
 CC = cc
-SRC = get_next_line.c get_next_line_utils.c parsingmap.c parsingmap1.c renderingtools.c rerenderingtools.c so_long.c tools.c tools1.c
+SRC = get_next_line.c get_next_line_utils.c parsingmap.c parsingmap1.c renderingtools.c rerenderingtools.c so_long.c tools.c tools1.c tools2.c
 MLX_API = -lmlx -framework OpenGL -framework AppKit
 OBJ = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror 
