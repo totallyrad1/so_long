@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 03:21:46 by asnaji            #+#    #+#             */
-/*   Updated: 2023/12/07 17:58:55 by asnaji           ###   ########.fr       */
+/*   Updated: 2023/12/09 00:28:42 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,46 +26,43 @@ void	*freee(char **p)
 	return (NULL);
 }
 
-
-void player_movement(t_game_info *game, int x, int y)
+void	player_movement(t_game_info *game, int x, int y)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
-	i = 0;
-	while(game->map[i])
+	i = -1;
+	while (game->map[++i])
 	{
-		j = 0;
-		while(game->map[i][j])
+		j = -1;
+		while (game->map[i][++j])
 		{
-			if(game->map[i][j] == 'P' && game->map[i + x][j + y] != '1' && game->map[i + x][j + y] != 'E')
+			if (game->map[i][j] == 'P' && game->map[i + x][j + y] != '1' && game->map[i + x][j + y] != 'E')
 			{
-				if(game->map[i + x][j + y] == 'C')
+				if (game->map[i + x][j + y] == 'C')
 					game->coins--;
 				game->map[i][j] = '0';
 				game->map[i + x][j + y] = 'P';
 				game->movements += 1;
-				printf("u moved %d times \n", game->movements);
+				ft_putnbr(game->movements);
+				ft_putchar('\n');
 				return ;
 			}
-			if(game->map[i][j] == 'P' && game->map[i + x][j + y] == 'E' && game->coins == 0)
+			if (game->map[i][j] == 'P' && game->map[i + x][j + y] == 'E' && game->coins == 0)
 			{
 				printf("You Won!!");
 				closewindow(game);
 			}
-			j++;
 		}
-		i++;
 	}
 }
 
-int key_pressed(int key, t_game_info *game)
+int	key_pressed(int key, t_game_info *game)
 {
-	int i = 0;
-	t_assets *assets;
+	int			i;
 
 	i = 0;
-	if(key == 53)
+	if (key == 53)
 		closewindow(game);
 	if (key == 123 || key == 126 || key == 124 || key == 125)
 	{
@@ -79,17 +76,13 @@ int key_pressed(int key, t_game_info *game)
 			player_movement (game, 0, 1);
 	}
 	mlx_clear_window(game->mlx, game->mlx_win);
-	assets = malloc(sizeof(t_assets));
-		if (!(assets))
-			exit (0);
-	load_images(game->mlx, assets);
-	maprender(game, assets);
-	free(assets);
-	return 0;
+	maprender(game);
+	return (0);
 }
 
-int closewindow(t_game_info *game)
+int	closewindow(t_game_info *game)
 {
+	mlx_clear_window(game->mlx, game->mlx_win);
 	mlx_destroy_window(game->mlx, game->mlx_win);
 	freee(game->map);
 	free(game->mlx);
