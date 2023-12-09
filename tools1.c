@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:54:52 by asnaji            #+#    #+#             */
-/*   Updated: 2023/12/09 12:15:35 by asnaji           ###   ########.fr       */
+/*   Updated: 2023/12/09 13:31:21 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ int	getheight(char **str)
 	return (i);
 }
 
-void	ft_putchar(char c)
+void	ft_putchar(char c, int fd)
 {
-	write(1, &c, 1);
+	write(fd, &c, 1);
 }
 
 void	ft_putnbr(int n)
 {
 	if (n < 0)
 	{
-		ft_putchar('-');
+		ft_putchar('-', 1);
 		n *= -1;
 	}
 	if (n > 9)
@@ -54,14 +54,14 @@ void	ft_putnbr(int n)
 		ft_putnbr(n % 10);
 	}
 	if (n >= 0 && n <= 9)
-		ft_putchar(n + 48);
+		ft_putchar(n + 48, 1);
 }
 
-void	ft_putstr(char *str)
+void	ft_putstr(char *str, int fd)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
-		ft_putchar(str[i++]);
+		ft_putchar(str[i++], fd);
 }

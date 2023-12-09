@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:13:34 by asnaji            #+#    #+#             */
-/*   Updated: 2023/12/09 12:46:48 by asnaji           ###   ########.fr       */
+/*   Updated: 2023/12/09 13:29:46 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,14 @@ char	*ft_strdup(char *s1);
 size_t	ft_strlen(char *s);
 int		linelen(char *str);
 void	ft_putnbr(int n);
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
+void	ft_putchar(char c, int fd);
+void	ft_putstr(char *str, int fd);
 void	printmovement(t_game_info *game);
 char	*ft_itoa(int n);
 size_t	ft_strlcat(char *dst, char *src, size_t dstsize);
 size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
 
+//parsemap tools
 int		validcomponent(char c);
 int		doesmapexist(char *map);
 char	**read_map(char *map);
@@ -65,6 +66,7 @@ int		get_j(char **map);
 int		checkcomponents(int coins, int e, int p);
 void	update_e_and_p(char c, int *e, int *p);
 
+// rendering tools
 void	put_img(t_game_info *game, char *ptr, int i, int j);
 int		getwidth(char *str);
 int		getheight(char **str);

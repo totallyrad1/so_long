@@ -6,11 +6,10 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 03:21:46 by asnaji            #+#    #+#             */
-/*   Updated: 2023/12/09 12:32:00 by asnaji           ###   ########.fr       */
+/*   Updated: 2023/12/09 13:31:55 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "so_long.h"
 
 void	*freee(char **p)
@@ -49,7 +48,7 @@ void	player_movement(t_game_info *game, int x, int y, int i)
 			if (game->map[i][j] == 'P' && game->map[i + x][j + y] == 'E'
 				&& game->coins == 0)
 			{
-				printf("You Won!!");
+				ft_putstr("You Won!!\n", 1);
 				closewindow(game);
 			}
 		}
@@ -81,7 +80,7 @@ int	key_pressed(int key, t_game_info *game)
 
 int	closewindow(t_game_info *game)
 {
-	ft_putstr("Window closed\n");
+	ft_putstr("Window closed\n", 1);
 	mlx_clear_window(game->mlx, game->mlx_win);
 	mlx_destroy_window(game->mlx, game->mlx_win);
 	freee(game->map);

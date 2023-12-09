@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 23:07:54 by asnaji            #+#    #+#             */
-/*   Updated: 2023/12/09 12:22:19 by asnaji           ###   ########.fr       */
+/*   Updated: 2023/12/09 13:30:11 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	load_images(void *mlx, t_game_info *game)
 	if (!game->door || !game->player
 		|| !game->coin || !game->wall || !game->floor)
 	{
-		perror("Error\ninvalid assets");
+		ft_putstr("Error\ninvalid assets", 2);
 		exit(0);
 	}
 }
