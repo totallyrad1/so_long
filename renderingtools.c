@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 23:07:54 by asnaji            #+#    #+#             */
-/*   Updated: 2023/12/09 00:30:10 by asnaji           ###   ########.fr       */
+/*   Updated: 2023/12/09 12:22:19 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ void	load_images(void *mlx, t_game_info *game)
 	if (!game->door || !game->player
 		|| !game->coin || !game->wall || !game->floor)
 	{
-		write(1, "Error\ninvalid assets", 21);
+		perror("Error\ninvalid assets");
 		exit(0);
 	}
 }
 
 void	put_img(t_game_info *game, char *ptr, int j, int i)
 {
+	i += 1;
 	mlx_put_image_to_window(game->mlx, game->mlx_win, ptr, j * 60, i * 60);
 }
 
@@ -61,4 +62,5 @@ void	maprender(t_game_info *game)
 		}
 		i++;
 	}
+	printmovement(game);
 }

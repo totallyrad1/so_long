@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/09 11:45:09 by asnaji            #+#    #+#             */
+/*   Updated: 2023/12/09 12:49:13 by asnaji           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	ft_strcmp(char *s1, char *s2)
@@ -11,7 +23,7 @@ int	ft_strcmp(char *s1, char *s2)
 			return (s1[i] - s2[i]);
 		i++;
 	}
-	return (0); 
+	return (0);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -74,26 +86,15 @@ char	*ft_strdup(char *s1)
 	return (cpy);
 }
 
-int linelen(char *str)
+int	linelen(char *str)
 {
-	int i = 0;
-	while(str[i])
+	int	i;
+
+	i = 0;
+	while (str[i])
 		i++;
 	i--;
-	while(str[i] == '\n')
+	while (str[i] == '\n')
 		i--;
-	return i;
-}
-
-int checkfullwall(char *str)
-{
-	int i = 0;
-	while(str[i])
-	{
-		if(str[i] == '1' || str[i] == '\n')
-			i++;
-		else
-		 	return 0;
-	}
-	return 1;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:13:34 by asnaji            #+#    #+#             */
-/*   Updated: 2023/12/09 00:33:13 by asnaji           ###   ########.fr       */
+/*   Updated: 2023/12/09 12:46:48 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,12 @@ size_t	ft_strlen(char *s);
 int		linelen(char *str);
 void	ft_putnbr(int n);
 void	ft_putchar(char c);
+void	ft_putstr(char *str);
+void	printmovement(t_game_info *game);
+char	*ft_itoa(int n);
+size_t	ft_strlcat(char *dst, char *src, size_t dstsize);
+size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
 
-//parsemap tools
 int		validcomponent(char c);
 int		doesmapexist(char *map);
 char	**read_map(char *map);
@@ -58,8 +62,9 @@ void	flood_fill(t_game_info **game, int i, int j);
 int		backtrackingcheck(t_game_info *game);
 int		get_i(char **map);
 int		get_j(char **map);
+int		checkcomponents(int coins, int e, int p);
+void	update_e_and_p(char c, int *e, int *p);
 
-// rendering tools
 void	put_img(t_game_info *game, char *ptr, int i, int j);
 int		getwidth(char *str);
 int		getheight(char **str);
@@ -68,7 +73,7 @@ void	put_img(t_game_info *game, char *ptr, int j, int i);
 void	maprender(t_game_info *game);
 void	*freee(char **p);
 int		closewindow(t_game_info *game);
-void	player_movement(t_game_info *game, int x, int y);
-int	key_pressed(int key, t_game_info *game);
+void	player_movement(t_game_info *game, int x, int y, int i);
+int		key_pressed(int key, t_game_info *game);
 
 #endif

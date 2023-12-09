@@ -6,7 +6,7 @@
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:15:04 by asnaji            #+#    #+#             */
-/*   Updated: 2023/12/09 00:39:28 by asnaji           ###   ########.fr       */
+/*   Updated: 2023/12/09 12:45:01 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	doesmapexist(char *map)
 	int	i;
 
 	i = 0;
-	while (map[i] && map[i] != '.')
+	while (map[i])
 		i++;
-	if (ft_strcmp(&map[i], ".ber") != 0)
+	if (ft_strcmp(&map[i - 4], ".ber") != 0)
 		return (0);
 	return (1);
 }
@@ -73,8 +73,8 @@ int	validcomponentscheck(char **check, t_game_info *game, int e, int p)
 {
 	int	j;
 	int	i;
-	game->coins = 0;
 
+	game->coins = 0;
 	j = -1;
 	i = -1;
 	if (!check[0])
@@ -88,18 +88,13 @@ int	validcomponentscheck(char **check, t_game_info *game, int e, int p)
 			{
 				if (check[j][i] == 'C')
 					game->coins++;
-				if (check[j][i] == 'E')
-					e--;
-				if (check[j][i] == 'P')
-					p--;
+				update_e_and_p(check[j][i], &e, &p);
 			}
 			else
 				return (0);
 		}
 	}
-	if (game->coins != 0 && e == 0 && p == 0)
-		return (1);
-	return (0);
+	return (checkcomponents(game->coins, e, p));
 }
 
 int	checkifmaprectangular(char **str)

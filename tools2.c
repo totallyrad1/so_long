@@ -5,30 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asnaji <asnaji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/08 23:14:44 by asnaji            #+#    #+#             */
-/*   Updated: 2023/12/08 23:17:29 by asnaji           ###   ########.fr       */
+/*   Created: 2023/12/09 12:45:04 by asnaji            #+#    #+#             */
+/*   Updated: 2023/12/09 12:49:51 by asnaji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_putchar(char c)
+int	checkcomponents(int coins, int e, int p)
 {
-	write(1, &c, 1);
+	if (coins != 0 && e == 0 && p == 0)
+		return (1);
+	return (0);
 }
 
-void ft_putnbr(int n)
+void	update_e_and_p(char c, int *e, int *p)
 {
-	if(n < 0)
+	if (c == 'E')
+		(*e)--;
+	if (c == 'P')
+		(*p)--;
+}
+
+int	checkfullwall(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		ft_putchar('-');
-		n *= -1;
+		if (str[i] == '1' || str[i] == '\n')
+			i++;
+		else
+			return (0);
 	}
-	if(n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	if(n >= 0 && n <= 9)
-		ft_putchar(n + 48);
+	return (1);
 }
