@@ -4,7 +4,7 @@
 
 1 , use make at the root of your repository.
 
-2 , execute ./so_long <ur map>.ber ( the map must be rectangular , surrounded by walls , the player has to be able to get all the cellectibles and can enter the exit ).
+2 , execute ./so_long <ur_map>.ber ( the map must be rectangular , surrounded by walls , the player has to be able to get all the cellectibles and can enter the exit ).
 
 3 , enjoy.
 
